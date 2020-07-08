@@ -52,11 +52,10 @@ order by department_id asc;
 
 
 --8. 각 직위별로 총월급을 출력하되 월급이 낮은 순으로 출력하라.
-select ename,job,
-       first_value(sal) over(partition by job order by sal) "직위별 월급순위"
-       
+select job, sum(sal)
 from emp
-
+group by job
+order by sum(sal)
 
 
 --9. 직위별 총월급을 출력하되, 직위가 'MANAGER'인 사원들은 제외하라. 
